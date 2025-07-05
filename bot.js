@@ -1,4 +1,4 @@
-const Discord = require('discord.js')
+const { Client, GatewayIntentBits, Partials, ActivityType } = require('discord.js')
 const fetch = require("node-fetch");
 const emoji = require('node-emoji'); 
 // 再起動
@@ -24,75 +24,20 @@ const CH_KAI2_BOSS = "1157232656111644742";    // カイ2
 const CH_KAI2_BOSS1 = "1157232656111644742";    // カイ2
 const CH_KAI2_BOSS2 = "1157232656111644742";    // カイ2 
 
-const client = new Discord.Client({
-    ws: { intents: Discord.Intents.ALL },
-    partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
+const client = new Client({
     intents: [
-        Discord.Intents.FLAGS.GUILDS,
-        Discord.Intents.FLAGS.GUILD_PRESENCES,
-        Discord.Intents.FLAGS.GUILD_MESSAGES,
-        Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-        Discord.Intents.FLAGS.DIRECT_MESSAGES,
-        Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
-        Discord.Intents.FLAGS.DIRECT_MESSAGE_TYPING,
-        Discord.Intents.FLAGS.GUILD_MEMBERS,
-        Discord.Intents.FLAGS.GUILD_VOICE_STATES,
-        Discord.Intents.FLAGS.GUILD_PRESENCES
-    ]
-})
-
-// botが準備できれば発動され、 上から順に処理される。 
-client.on('ready', () => {
-
-    // コンソールにBot準備完了～と表示
-    console.log('Bot準備完了～');
-    // ステータスに〇〇をプレイ中と表示
-    client.user.setActivity('!ヘルプ｜L2M', { type: ActivityType.Playing });
-});
-
-client.on('guildMemberRemove', (guildMemberRemove) => {
-    // guildMemberRemove.guild.name
-    var str = guildMemberRemove.guild.name + "から" + guildMemberRemove.displayName + "がサーバーから脱退しました";
-    
-    //client.channels.cache.get(CH_INOUT).send(str)
-    if (guildMemberRemove.guild.name === "ホバーツ") {
-        // ホバーツの場合
-        client.channels.cache.get("1156383619108061194").send(str)
-    }
-    else if (guildMemberRemove.guild.name === "ソラシド") 
-    {   
-        // ソラシドの場合
-        client.channels.cache.get("1027032767378235473").send(str)
-    }
-    else if (guildMemberRemove.guild.name === "バツ２用") 
-    {   
-        // バツ２用の場合
-        client.channels.cache.get("1166583973384818768").send(str)
-    }
-    else if (guildMemberRemove.guild.name === "無幻ランド") 
-    {   
-        // 夢
-        client.channels.cache.get("1135184690387624059").send(str)
-    }
-    else
-    {
-        client.channels.cache.get(CH_INOUT).send(str)
-    }
-
-});
-
-
-
-
-client.on('messageCreate', async message => {
-
-    // 再帰を防止
-    if (message.author.id === client.user.id || message.author.bot) {
-        return;
-    }
-
-    // 説明時の接頭語
-    if (message.content.match(/###/)) {
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildPresences,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.GuildMessageReactions,
+        GatewayIntentBits.DirectMessages,
+        GatewayIntentBits.DirectMessageReactions,
+        GatewayIntentBits.DirectMessageTyping,
+        GatewayIntentBits.GuildVoiceStates
+    ],
+    partials: [Partials.Message, Partials.Channel, Partials.Reaction]
+}) {
         return;
     }
 
