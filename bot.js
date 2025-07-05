@@ -15,7 +15,7 @@ const CH_JIGU6_BOSS = "889540213104332811";    // 6鯖赤ドロ（ささぱー�
 const CH_SASAPACI = "921335401799643147";    // ささぱーしh
 const CH_JIGU2_BOSS = "976383794997260288";    // 2鯖赤ドロCh
 const CH_JIGU5_BOSS = "913632478932127755";    //  5鯖赤ドロCh 
-const CH_KAI6_BOSS = "1006859929610633226";    // カイン6鯖赤ドロCh
+const CH_KAI6_BOSS = "1006859929610633226";    // カイン6鯖赤ドロCh 
 
 const CH_KAI5_BOSS = "1157173245917798440";    // カイ５
 const CH_KAI4_BOSS = "1157185576429162586";    // カイ4
@@ -37,7 +37,7 @@ const client = new Client({
         GatewayIntentBits.GuildVoiceStates
     ],
     partials: [Partials.Message, Partials.Channel, Partials.Reaction]
-}) {
+});
         return;
     }
 
@@ -626,7 +626,7 @@ function sendReply(message, text) {
 }
 
 // メッセージをチャンネルに送信
-function sendMsg(channelId, option = {}) {
+function sendMsg(channelId, option = {});
     client.channels.cache.get(channelId).send(option)
         .then(console.log("メッセージ送信: " + JSON.stringify(option)))
         .catch(console.error);
