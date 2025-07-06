@@ -321,10 +321,10 @@ client.on('messageCreate', async message => {
             default:
                 return;
         }
-
+       
         URL += "name=" + displayName;
         URL += "&msg=" + postMsg;
-        console.log("URL" + URL);
+        console.log("URL討伐報告 " + URL);
 
         fetch(URL)
             .then(response => response.json())
