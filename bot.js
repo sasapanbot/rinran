@@ -323,7 +323,7 @@ client.on('messageCreate', async message => {
         }
        
         URL += "name=" + displayName;
-        URL += "&msg=" + postMsg;
+        URL += "?msg=" + postMsg;
         console.log("URL討伐報告 " + URL);
 
         fetch(URL)
