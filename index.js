@@ -1,23 +1,14 @@
 // index.js
 
-// Response for Uptime Robot and GAS
+// Response for Uptime Robot and health check
 require('dotenv').config();
 const http = require('http');
 const querystring = require('querystring');
-const { isLocked, createLock, clearLockOnExit } = require('./lock');  // 多重起動防止ロック
 
-// ★ 多重起動を防止する処理
-if (isLocked()) {
-    console.log('⚠ Botはすでに起動しています。重複起動を防ぐため終了します。');
-    process.exit(0);
-}
-createLock();
-clearLockOnExit();
+// PORT は Koyeb/Render が自動的に指定する環境変数に対応
+const PORT = process.env.PORT || 10000;  // Koyebでは10000がログで確認済み
 
-// ★ PORT は Render が自動的に指定する環境変数に対応
-const PORT = process.env.PORT || 3000;
-
-// Webサーバー（GASやUptimeRobot用）
+// Webサーバー（健康チェック / UptimeRobot 用）
 http.createServer(function (req, res) {
     if (req.method === 'POST') {
         let data = "";
@@ -39,6 +30,9 @@ http.createServer(function (req, res) {
     } else if (req.method === 'GET') {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('Discord Bot is active now\n');
+    } else {
+        res.writeHead(405, { 'Content-Type': 'text/plain' });
+        res.end('Method Not Allowed');
     }
 }).listen(PORT, () => {
     console.log(`✅ HTTPサーバー起動中：ポート ${PORT}`);
@@ -52,5 +46,3 @@ if (!process.env.DISCORD_BOT_TOKEN) {
 
 // Botの本体起動
 require('./bot.js');
-
-
