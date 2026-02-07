@@ -1,47 +1,37 @@
-// bot.js（Render 安定版）
+const { Client, GatewayIntentBits } = require('discord.js');
 
-const {
-  Client,
-  GatewayIntentBits,
-  ActivityType
-} = require('discord.js');
-
-// ===== Client 作成（最小・安全）=====
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent
+    GatewayIntentBits.MessageContent  // メッセージ内容を読むのに必要（v14以降必須）
   ]
 });
 
-// ===== エラーを必ずログに出す =====
-process.on('unhandledRejection', console.error);
-process.on('uncaughtException', console.error);
-
-console.log('🟢 bot.js 読み込み開始');
-
-// ===== ready =====
 client.once('ready', () => {
-  console.log(`✅ Logged in as ${client.user.tag}`);
-
-  client.user.setActivity('!ヘルプ｜L2M', {
-    type: ActivityType.Playing
-  });
+  console.log(`Logged in as ${client.user.tag}!`);
+  console.log('Bot is online and ready.');
 });
 
-// ===== メッセージ受信（テスト用）=====
-client.on('messageCreate', async (message) => {
+client.on('messageCreate', message => {
+  // 自分自身のメッセージは無視
   if (message.author.bot) return;
 
+  // シンプルなテストコマンド
   if (message.content === '!ping') {
-    await message.channel.send('pong!');
+    message.reply('Pong!');
   }
+
+  // 追加のコマンドはここに書いていけます
 });
 
-// ===== Discord login =====
-console.log('🟡 Discord login 開始');
+function start() {
+  const token = process.env.DISCORD_BOT_TOKEN;
+  if (!token) {
+    console.error('DISCORD_BOT_TOKEN が設定されていません！');
+    process.exit(1);
+  }
+  client.login(token);
+}
 
-client.login(process.env.DISCORD_BOT_TOKEN)
-  .then(() => console.log('🟢 Discord login 成功'))
-  .catch(err => console.error('🔴 Discord login 失敗', err));
+module.exports = { start };
