@@ -1,27 +1,18 @@
 {
-  "name": "discord-bot",
-  "version": "0.0.0",
-  "description": "discord bot",
+  "name": "discord-bot-minimal",
+  "version": "1.0.0",
+  "description": "Minimal Discord Bot for Render",
   "main": "index.js",
-  "dependencies": {
-    "date-utils": "^1.2.21",
-    "discord.js": "^14.19.3",
-    "dotenv": "^16.5.0",
-    "iconv": "^3.0.1",
-    "node-emoji": "^1.11.0",
-    "pg": "^8.8.0",
-    "node-fetch": "^2.6.7"
-  },
   "scripts": {
-    "start": "node index.js",
-    "test": "node index.js"
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "express": "^4.19.2"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": "20.x"
   },
-  "overrides": {
-    "npm": {
-      "cross-spawn": "^7.0.5"
-    }
-  }
-} 
+  "author": "",
+  "license": "ISC"
+}
