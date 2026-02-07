@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "discord-bot",
   "version": "0.0.0",
   "description": "discord bot",
@@ -24,4 +24,4 @@
       "cross-spawn": "^7.0.5"
     }
   }
-}
+} 
