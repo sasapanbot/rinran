@@ -22,4 +22,4 @@ module.exports = {
   isLocked,
   createLock,
   clearLockOnExit
-};
+}; 
