@@ -31,7 +31,22 @@ function start() {
     console.error('DISCORD_BOT_TOKEN が設定されていません！');
     process.exit(1);
   }
-  client.login(token);
+
+  console.log('Attempting Discord login...');  // ← 追加：ここまで来てるか確認
+
+  client.login(token)
+    .then(() => {
+      console.log('Discord login SUCCESSFUL! Bot is online.');
+    })
+    .catch(err => {
+      console.error('Discord login FAILED:', err);           // ← 詳細エラー出力
+      console.error('Error code:', err.code);
+      console.error('Error message:', err.message);
+      if (err.httpStatus === 429) {
+        console.error('Rate limited by Discord! Likely Render shared IP issue.');
+      }
+    });
 }
 
 module.exports = { start };
+
