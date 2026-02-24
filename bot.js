@@ -227,7 +227,7 @@ client.on('messageCreate', async message => {
             CH_KAI2_BOSS_ENTRY, CH_KAI3_BOSS_ENTRY, CH_KAI4_BOSS_ENTRY, CH_KAI5_BOSS_ENTRY,
             "1336811041308278865", "1179024611350958090", "1199576694445584394", "1212224665095770162",
             "1327420127788007474", "1252568320780009542", "1253281439454204015", "1263636724614041712",
-            "1359471770431652050", CH_BATSU_BOSS_ENTRY
+            "1475839542173896734", CH_BATSU_BOSS_ENTRY
         ].includes(message.channel.id)
     ) {
         if (message.content.match(/!説明/)) {
@@ -315,7 +315,7 @@ client.on('messageCreate', async message => {
             case "1263636724614041712":
                 URL = "https://script.google.com/macros/s/AKfycbxnmEKYxIjSdHBSnl2cUZYAd3nUzquZ6xRC9g82FG063HNOtoJ_SOQsOF4dkRas3zZQzw/exec?";
                 break;
-            case "1359471770431652050":
+            case "1475839542173896734":
                 URL = "https://script.google.com/macros/s/AKfycbxk7xQO-5i17l8J58dYCB-IY7Q0X3b6Vv2-A7eUk9VVWj61D7lVBLPjtF4zrhAnzJKLGA/exec?";
                 break;
             default:
@@ -664,3 +664,4 @@ function sendMsg(channelId, option = {}) {
         .then(() => console.log("メッセージ送信: " + JSON.stringify(option)))
         .catch(error => console.error("メッセージ送信エラー:", error));
 }
+
