@@ -378,7 +378,7 @@ client.on('messageCreate', async message => {
         (message.channel.id === "1252568263603388466") || // 次官
         (message.channel.id === "1253281576696156170") || // ラム２
         (message.channel.id === "1263636820210749481") || // カレー
-        (message.channel.id === "1359471728908042290") || // うどん
+        (message.channel.id === "1475839580606431395") || // うどん
         (message.channel.id === CH_BATSU_BOSS_ALARM)) {
         //    if ((message.channel.id === TESTCH) || (message.channel.id === TESTCH)) {   // てすと
         console.log("message.content " + message.content);
@@ -457,7 +457,7 @@ client.on('messageCreate', async message => {
                 case "1263636820210749481": // カレー
                     listUrl = "https://script.google.com/macros/s/AKfycbxpLqX8e3YUy79FYhPAX0BjsRXyspBpo62upmmkN9pbfBwxMxvSK1n02L6V3zDf1q1Dcg/exec";
                     break;
-                case "1359471728908042290": // うどん
+                case "1475839580606431395": // うどん
                     listUrl = "https://script.google.com/macros/s/AKfycbzMKbk4k_Q2QDqVjhJ0DNfUN-eBjt4FAeRT9mxhFdq-Yfpj4C-un0soSWjB4naah0GP/exec";
                     break;
                 default:
@@ -549,7 +549,7 @@ client.on('messageCreate', async message => {
             var type = "1";
             var URL = "";
             // うどんの場合
-            if (message.channel.id === "1359471728908042290") {
+            if (message.channel.id === "1475839580606431395") {
                 URL = "https://script.google.com/macros/s/AKfycbzJZudQWyeyqa1MXzHYk5xyP8pw3q7y10EJYV94MtZtXPWhqPjBfasx_eEAgcmgY63W/exec?";
             }
             else {
@@ -597,7 +597,7 @@ client.on('messageCreate', async message => {
 
             var type = "2";
             var URL = "";
-            if (message.channel.id === "1359471728908042290") {
+            if (message.channel.id === "1475839580606431395") {
                 URL = "https://script.google.com/macros/s/AKfycbzJZudQWyeyqa1MXzHYk5xyP8pw3q7y10EJYV94MtZtXPWhqPjBfasx_eEAgcmgY63W/exec?";
             }
             else {
@@ -664,4 +664,5 @@ function sendMsg(channelId, option = {}) {
         .then(() => console.log("メッセージ送信: " + JSON.stringify(option)))
         .catch(error => console.error("メッセージ送信エラー:", error));
 }
+
 
